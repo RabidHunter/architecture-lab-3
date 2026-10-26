@@ -31,5 +31,13 @@
 ## Actual impact (заповнити після реалізації)
 
 **Actual files changed:**
+- `src/checkout/CheckoutController.ts`
+- `src/orders/OrderService.ts`
+- `src/payments/internal/StripeClient.ts`
+- `src/payments/PaymentsService.ts` (новий)
+- `src/payments/internal/FakeProvider.ts` (новий)
+- `tests/payments.unit.test.ts` (новий)
+- Видалені: дублікати `mapPaymentStatus.ts` та `orderMutations.ts`.
 
 **Difference from prediction and explanation:**
+Прогноз виявився дуже точним. Єдина відмінність: замість додавання тестів до існуючого `checkout.functional.test.ts`, було створено окремий ізольований файл `payments.unit.test.ts` суто для юніт-тестування нормалізації статусів (як того вимагає рівень 60). Усі очікувані модулі (`Inventory`, `shared`) залишилися без змін, підтвердивши правильність нових меж.
